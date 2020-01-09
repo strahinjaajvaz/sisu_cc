@@ -10,9 +10,10 @@ function App({ cars }) {
   const [model, setModel] = useState("");
   const [orderBy, setOrderBy] = useState("");
 
-  const handleMakeChange = useCallback(({ target: { value } }) =>
-    setMake(value)
-  );
+  const handleMakeChange = useCallback(({ target: { value } }) => {
+    setMake(value);
+    setModel("");
+  });
   const handleModelChange = useCallback(({ target: { value } }) =>
     setModel(value)
   );

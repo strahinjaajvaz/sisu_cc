@@ -1,5 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+
+const StyledCard = styled.div`
+  font-size: 1.6rem;
+  & > div {
+    & > span {
+      margin-right: 20px;
+    }
+  }
+`;
 
 /**
  * No point in using Raect.memo as the list isn't appended to
@@ -9,12 +19,14 @@ import PropTypes from "prop-types";
 
 function Card({ make, model, bodyType, price }) {
   return (
-    <div>
-      <p>{make}</p>
+    <StyledCard>
+      <h3>{make}</h3>
       <p>{model}</p>
-      <p>{bodyType}</p>
-      <p>{price}</p>
-    </div>
+      <div>
+        <span>{bodyType}</span>
+        <span>${price}</span>
+      </div>
+    </StyledCard>
   );
 }
 
