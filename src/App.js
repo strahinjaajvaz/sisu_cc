@@ -1,8 +1,8 @@
 import React, { useMemo, useState, useCallback } from "react";
-import Card from "./components/Card";
+import Table from "./components/Table";
 
 function App({ cars }) {
-  const CAR_MAKES = useMemo(
+  const carMakes = useMemo(
     () => Array.from(new Set(cars.map(car => car.make))).sort(),
     []
   );
@@ -32,7 +32,7 @@ function App({ cars }) {
     <div>
       <select onChange={handleMakeChange}>
         <option value="">Select A Make</option>
-        {CAR_MAKES.map(item => (
+        {carMakes.map(item => (
           <option key={item} value={item}>
             {item}
           </option>
@@ -55,11 +55,7 @@ function App({ cars }) {
             </option>
           ))}
       </select>
-      <div>
-        {filteredList.map(car => (
-          <Card {...car} key={car.carId} />
-        ))}
-      </div>
+      <Table cars={filteredList} />
     </div>
   );
 }
